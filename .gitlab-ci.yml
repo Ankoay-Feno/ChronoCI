@@ -1,0 +1,20 @@
+stages:
+  - build_push
+
+variables:
+  IMAGE_NAME: ankoayfeno/chronoci:latest
+
+build_and_push_job:
+  stage: build_push
+  image: docker:latest
+  services:
+    - docker:dind
+  rules:
+    changes:
+      - website/**
+      - docker-compose.yaml
+      - .gitlab-ci.yml
+  script:
+    - echo "$DOCKER_PASSWD" | docker login -u "$DOCKER_USER" --password-stdin
+    - docker build --no-cache -f website/Dockerfile -t $IMAGE_NAME website/
+    - docker push $IMAGE_NAME
