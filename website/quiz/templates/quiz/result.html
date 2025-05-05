@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultat du Quiz</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Résultat du Quiz</h1>
+        <div class="text-center">
+            <p>Score : <strong>{{ score }}</strong> / <strong>{{ total }}</strong></p>
+            <a href="{% url 'quiz' %}" class="btn btn-primary">Recommencer</a>
+        </div>
+    </div>
+</body>
+</html>
